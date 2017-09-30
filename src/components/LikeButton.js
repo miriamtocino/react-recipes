@@ -14,7 +14,7 @@ class LikeButton extends PureComponent {
 
   classNames() {
     const { liked } = this.state
-    let classes = 'like'
+    let classes = 'LikeButton'
 
     if (liked) { classes += ' liked' }
 
@@ -33,15 +33,9 @@ class LikeButton extends PureComponent {
     return (
       <p className={ this.classNames() }>
         <button onClick={ this.toggleLike.bind(this) }>
-          { liked ?
-            <span role="img" aria-label="liked">❤️</span> :
-            <span role="img" aria-label="not liked">♡</span>
-          }
+          <img className="heart" alt="liked" src={ liked ? HeartRed : HeartGrey } />
           <span className="copy">
-            { liked ?
-              <span role="img" aria-label="liked">❤️</span> :
-              <span role="img" aria-label="not liked">♡</span>
-            }
+            <img className="heart" alt="not liked" src={ liked ? HeartRed : HeartGrey } />
           </span>
         </button>
         <span className="likes">{ liked ? 'You like this' : null }</span>
