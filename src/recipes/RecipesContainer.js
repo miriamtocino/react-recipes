@@ -5,6 +5,7 @@ import RecipeItem from './RecipeItem'
 
 class RecipesContainer extends PureComponent {
   static propTypes = {
+    recipes: PropTypes.array.isRequired,
     updateRecipe: PropTypes.func.isRequired,
   }
 

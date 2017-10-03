@@ -17,13 +17,12 @@ class RecipeItem extends PureComponent {
   }
 
   toggleLike() {
-    const { _id } = this.props
-    console.log("I'm in RecipeItem! Recipe id: " + _id)
-    this.props.onChange(_id)
+    const { _id, liked } = this.props
+    this.props.onChange(_id, { liked: !liked })
   }
 
   render() {
-    const { title, summary, vegan, vegetarian, pescatarian } = this.props
+    const { title, summary, vegan, vegetarian, pescatarian, liked } = this.props
 
     return(
       <article className="recipe">
@@ -36,7 +35,7 @@ class RecipeItem extends PureComponent {
             { !vegan && vegetarian && <li><img src={Vegetarian} alt="vegetarian" /></li> }
           </ul>
           <footer>
-            <LikeButton onChange={ this.toggleLike.bind(this) } />
+            <LikeButton onChange={this.toggleLike.bind(this)} liked={liked} />
           </footer>
         </div>
       </article>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import RecipesContainer from './recipes/RecipesContainer'
 
 const recipes = [
@@ -44,22 +44,28 @@ const recipes = [
   },
 ]
 
-class App extends React.Component {
+class App extends PureComponent {
   constructor() {
     super()
-
-    this.state = {
-      recipes
-    }
+    this.state = { recipes }
   }
 
-  updateRecipe(id) {
-    console.log("I'm in App! Recipe id: " + id)
+  updateRecipe(id, updatedAttributes) {
+    const { recipes } = this.state
+
+    this.setState({
+      recipes: recipes.map((recipe) => {
+        if (recipe._id !== id) return recipe
+        return Object.assign({}, recipe, updatedAttributes)
+      })
+    })
   }
 
   render() {
+    const { recipes } = this.state
+
     return (
-      <div>
+      <div className="app">
         <RecipesContainer
           recipes={ recipes }
           updateRecipe={ this.updateRecipe.bind(this) } />

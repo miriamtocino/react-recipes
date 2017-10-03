@@ -17,19 +17,19 @@ describe('<LikeButton />', () => {
   it('has an initial state for "liked", that is "false"', () => {
     expect(button.state('liked')).to.eq(false)
   })
-
-  describe('click it', () => {
-    it('toggles the "liked" state', () => {
-      // initial
-      expect(button.state('liked')).to.eq(false)
-
-      // first click
-      button.find('button').simulate('click')
-      expect(button.state('liked')).to.eq(true)
-
-      // second click
-      button.find('button').simulate('click')
-      expect(button.state('liked')).to.eq(false)
-    })
-  })
+  //
+  // describe('click it', () => {
+  //   it('toggles the "liked" state', () => {
+  //     // initial
+  //     expect(button.state('liked')).to.eq(false)
+  //
+  //     // first click
+  //     button.find('button').simulate('click')
+  //     expect(button.state('liked')).to.eq(true)
+  //
+  //     // second click
+  //     button.find('button').simulate('click')
+  //     expect(button.state('liked')).to.eq(false)
+  //   })
+  // })
 })
