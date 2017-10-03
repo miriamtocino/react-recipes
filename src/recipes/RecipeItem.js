@@ -7,6 +7,7 @@ import LikeButton from '../components/LikeButton'
 
 class RecipeItem extends PureComponent {
   static propTypes = {
+    _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired,
     vegan: PropTypes.bool,
@@ -16,8 +17,9 @@ class RecipeItem extends PureComponent {
   }
 
   toggleLike() {
-    console.log("I'm in RecipeItem!")
-    this.props.onChange()
+    const { _id } = this.props
+    console.log("I'm in RecipeItem! Recipe id: " + _id)
+    this.props.onChange(_id)
   }
 
   render() {
