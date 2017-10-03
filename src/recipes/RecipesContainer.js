@@ -1,10 +1,20 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import Title from '../components/Title'
 import RecipeItem from './RecipeItem'
 
 class RecipesContainer extends PureComponent {
+  static propTypes = {
+    updateRecipe: PropTypes.func.isRequired,
+  }
+
   renderRecipe(recipe, index) {
-    return <RecipeItem key={index} { ...recipe } />
+    const { updateRecipe } = this.props
+
+    return <RecipeItem
+      key={index}
+      onChange={updateRecipe}
+      { ...recipe } />
   }
 
   render() {
@@ -15,7 +25,7 @@ class RecipesContainer extends PureComponent {
         </header>
 
         <main>
-          { this.props.recipes.map(this.renderRecipe) }
+          { this.props.recipes.map(this.renderRecipe.bind(this)) }
         </main>
       </div>
     )

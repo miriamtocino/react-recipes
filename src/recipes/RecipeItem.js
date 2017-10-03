@@ -12,6 +12,12 @@ class RecipeItem extends PureComponent {
     vegan: PropTypes.bool,
     vegetarian: PropTypes.bool,
     pescatarian: PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
+  }
+
+  toggleLike() {
+    console.log("I'm in RecipeItem!")
+    this.props.onChange()
   }
 
   render() {
@@ -28,7 +34,7 @@ class RecipeItem extends PureComponent {
             { !vegan && vegetarian && <li><img src={Vegetarian} alt="vegetarian" /></li> }
           </ul>
           <footer>
-            <LikeButton />
+            <LikeButton onChange={ this.toggleLike.bind(this) } />
           </footer>
         </div>
       </article>

@@ -33,10 +33,17 @@ const recipes = [
 ]
 
 class App extends React.Component {
+
+  updateRecipe() {
+    console.log("I'm in App!")
+  }
+
   render() {
     return (
       <div>
-        <RecipesContainer recipes={ recipes } />
+        <RecipesContainer
+          recipes={ recipes }
+          updateRecipe={ this.updateRecipe.bind(this) } />
       </div>
     )
   }
