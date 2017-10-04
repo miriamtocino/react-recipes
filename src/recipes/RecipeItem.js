@@ -25,7 +25,7 @@ class RecipeItem extends PureComponent {
     const { title, summary, vegan, vegetarian, pescatarian, liked } = this.props
 
     return(
-      <article className="recipe">
+      <article className="RecipeItem">
         <h1>{ title }</h1>
         <div>
           <p>{ summary }</p>
