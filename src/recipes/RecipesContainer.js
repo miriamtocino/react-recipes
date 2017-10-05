@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Title from '../components/Title'
 import RecipeItem from './RecipeItem'
+import RecipeEditor from './RecipeEditor'
 
 class RecipesContainer extends PureComponent {
   static propTypes = {
@@ -24,6 +25,7 @@ class RecipesContainer extends PureComponent {
       <div className="recipes wrapper">
         <header>
           <Title content="Recipes" />
+          <RecipeEditor />
         </header>
 
         <main>
