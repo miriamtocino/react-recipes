@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import Pescatarian from '../images/pescatarian.svg'
 import Vegan from '../images/vegan.svg'
 import Vegetarian from '../images/vegetarian.svg'
@@ -22,22 +24,26 @@ class RecipeItem extends PureComponent {
   }
 
   render() {
-    const { title, summary, vegan, vegetarian, pescatarian, liked } = this.props
+    const { _id, title, summary, vegan, vegetarian, pescatarian, photo, liked } = this.props
 
     return(
-      <article className="RecipeItem">
-        <h1>{ title }</h1>
-        <div>
+      <article className="recipe">
+        <header>
+          <div className="cover" style={{ backgroundImage: `url(${photo})` }}>
+            <h1>
+              <Link to={`/recipes/${_id}`}>{ title }</Link>
+            </h1>
+          </div>
           <p>{ summary }</p>
           <ul>
             { pescatarian && <li><img src={Pescatarian} alt="pescatarian" /></li> }
             { vegan && <li><img src={Vegan} alt="vegan" /></li> }
             { !vegan && vegetarian && <li><img src={Vegetarian} alt="vegetarian" /></li> }
           </ul>
-          <footer>
-            <LikeButton onChange={this.toggleLike.bind(this)} liked={liked} />
-          </footer>
-        </div>
+        </header>
+        <footer>
+          <LikeButton onChange={this.toggleLike.bind(this)} liked={liked} />
+        </footer>
       </article>
     )
   }
