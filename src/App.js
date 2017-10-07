@@ -4,8 +4,8 @@ import RecipesContainer from './recipes/RecipesContainer'
 class App extends PureComponent {
   render() {
     return (
-      <div className="app">
-        <RecipesContainer />
+      <div className="App">
+        { this.props.children }
       </div>
     )
   }
