@@ -4,19 +4,21 @@ import PropTypes from 'prop-types'
 import Title from '../components/Title'
 import RecipeItem from './RecipeItem'
 import RecipeEditor from './RecipeEditor'
+import fetchRecipes from '../actions/recipes/fetch'
 
 class RecipesContainer extends PureComponent {
   static propTypes = {
     recipes: PropTypes.array.isRequired,
-    updateRecipe: PropTypes.func.isRequired,
+    fetchRecipes: PropTypes.func.isRequired,
+  }
+
+  componentWillMount() {
+    this.props.fetchRecipes()
   }
 
   renderRecipe(recipe, index) {
-    const { updateRecipe } = this.props
-
     return <RecipeItem
       key={index}
-      onChange={updateRecipe}
       { ...recipe } />
   }
 
@@ -36,8 +38,9 @@ class RecipesContainer extends PureComponent {
   }
 }
 
+// Make recipes array available in props
 const mapStateToProps = ({ recipes }) => ({
   recipes
 })
 
-export default connect(mapStateToProps)(RecipesContainer)
+export default connect(mapStateToProps, { fetchRecipes })(RecipesContainer)
